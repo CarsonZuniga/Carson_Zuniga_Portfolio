@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import './Layout.css'
 import resume from '../assets/resume.pdf'
+import { useState, useEffect } from "react";
 
 const Layout = () => {
     const [width, setWidth] = useState(window.innerWidth);
