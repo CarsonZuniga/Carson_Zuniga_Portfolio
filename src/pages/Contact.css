@@ -1,0 +1,25 @@
+.form_label_input {
+    display: flex;
+    flex-direction: column;
+    margin: 1vw;
+}
+
+#contact_form_container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5vw 0;
+}
+
+#contact_name_email_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#contact_name {
+    flex: 1;
+}
+
+#contact_email {
+    flex: 1;
+}
