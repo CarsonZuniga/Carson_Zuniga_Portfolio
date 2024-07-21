@@ -2,6 +2,9 @@ import { Outlet, Link } from "react-router-dom";
 import './Layout.css'
 import resume from '../assets/resume.pdf'
 import { useState, useEffect } from "react";
+import github_white from '../assets/github-mark-white.svg'
+import github_black from '../assets/github-mark.svg'
+import linkedin from '../assets/linkedin.png'
 
 const Layout = () => {
     const [width, setWidth] = useState(window.innerWidth);
@@ -44,6 +47,14 @@ const Layout = () => {
                             <a href={resume} without rel="noopener noreferrer" target="_blank">Resume</a>
                         </li>
                     </ul>
+                </div>
+                <div id="nav_bar_icons">
+                    <a href="https://github.com/CarsonZuniga" target="_blank">
+                        <img src={github_black} alt="Github Link"/>
+                    </a>
+                    <a href="https://www.linkedin.com/in/carsonzuniga/" target="_blank">
+                        <img src={linkedin} alt="LinkedIn Link"/>
+                    </a>
                 </div>
             </nav>
             <Outlet />
