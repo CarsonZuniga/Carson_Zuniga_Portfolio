@@ -6,7 +6,7 @@
 
     color-scheme: light dark;
     /* color: rgba(109, 109, 109, 0.87); */
-    background-color: #f2f2f2;
+    /* background-color: #f2f2f2; */
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -19,9 +19,22 @@ body {
     margin: 0;
     display: flex;
     place-items: center;
-    /* min-width: 320px;
-    min-height: 100vh; */
+    background-color: var(--bkg-color);
+    color: var(--text-color);
 }
+
+body {
+    --text-color: black;
+    --bkg-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+      --text-color: white;
+      --bkg-color: black;
+    }
+}
+
 *{
     margin: 0;
     padding: 0;
