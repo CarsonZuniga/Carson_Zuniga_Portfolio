@@ -11,4 +11,25 @@
 .education_right {
     flex: 3;
     /* background-color: red; */
+    text-align: start;
+}
+
+.education_class_container {
+    padding: 0.5vw;
+    margin: 1vh 0 1vh;
+    border-radius: 5px;
+    border: solid black;
+    border-width: thin;
+}
+
+summary {
+    font-weight: bold;
+}
+
+details > ul {
+    list-style-position: inside;
+}
+
+details > ul > li {
+    padding-left: 1em;
 }
