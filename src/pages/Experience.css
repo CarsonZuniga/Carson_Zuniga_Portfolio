@@ -1,0 +1,17 @@
+#experience_table {
+    display: flex;
+    margin: 0 5vw 0;
+}
+
+.experience_left {
+    flex: 1;
+}
+
+.experience_right {
+    flex: 3;
+    text-align: start;
+}
+
+.experience_right > ul {
+    list-style-position: inside;
+}

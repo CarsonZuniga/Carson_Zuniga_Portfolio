@@ -35,16 +35,22 @@ const Layout = () => {
                             <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="/education">Education</Link>
+                            <Link to="/about">About</Link>
                         </li>
                         <li>
+                            <Link to="/education">Education</Link>
+                        </li>
+                        {/* <li>
                             <Link to="/blogs">Blogs</Link>
+                        </li> */}
+                        <li>
+                            <Link to="/experience">Experience</Link>
                         </li>
                         <li>
                             <Link to="/contact">Contact</Link>
                         </li>
                         <li>
-                            <a href={resume} without rel="noopener noreferrer" target="_blank">Resume</a>
+                            <a href={resume} target="_blank">Resume</a>
                         </li>
                     </ul>
                 </div>

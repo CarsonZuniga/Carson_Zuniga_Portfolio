@@ -20,7 +20,7 @@
 .form_label_input {
     display: flex;
     flex-direction: column;
-    margin: 1vw;
+    margin: 0 0.5vw 1vh 0.5vw;
 }
 
 #contact_form_container {
@@ -42,4 +42,27 @@
 
 #contact_email {
     flex: 1;
+}
+
+input[id=name], input[id=email] {
+    width: 100%;
+    padding: 1vh 1vw;
+    box-sizing: border-box;
+}
+
+input[id=subject] {
+    width: 100%;
+    padding: 1vh 1vw;
+    box-sizing: border-box;
+}
+
+textarea {
+    padding: 1vh 1vw;
+    box-sizing: border-box;
+    font-family: 'FiraGO', sans-serif;
+}
+
+#send_message_btn {
+    padding: 0.75vw;
+    overflow:auto;
 }

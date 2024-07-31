@@ -1,0 +1,101 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    /* background-color: rgba(76,76,76,1); */
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+
+.spotify-button {
+    background-color: rgb(29, 185, 84);
+    color: white;
+    margin: 1vh 0.5vw 1vh 0.5vw;
+    padding: 0.75vw;
+    border-radius: 5px;
+    border-color: white;
+    border-width: thin;
+    font-weight: bold;
+}
+
+.youtube-button {
+    background-color: red;
+    color: white;
+    margin: 1vh 0.5vw 1vh 0.5vw;
+    padding: 0.75vw;
+    border-radius: 5px;
+    border-color: white;
+    border-width: thin;
+    font-weight: bold;
+}
+
+#back-home-button-container {
+    flex: 1;
+    display: flex;
+    justify-content: start;
+}
+
+#back_home_button {
+    /* background-color: red; */
+    background-color: #222831;
+    color: white;
+    margin: 1vh 0.5vw 1vh 0.5vw;
+    padding: 0.75vw;
+    border-radius: 5px;
+    border-color: white;
+    border-width: thin;
+    font-weight: bold;
+}
+
+#spotify_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex: 1;
+}
+
+#main_buttons {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#main_data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#user_data {
+    flex: 1;
+}
+
+#user_playlists {
+    flex: 1;
+}
+
+#chosen_playlist_container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    /* justify-items: center; */
+}
+
+#album_tracks {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.album_image {
+    width: 20%;
+}
+
+.loading-gif {
+    width: 25%;
+    align-self: center;
+}
+
+/* .spotify-button a {
+    text-decoration: none;
+} */

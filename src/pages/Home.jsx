@@ -1,31 +1,53 @@
-
-
+import personal_photo from '../assets/personal_photo.png'
+import './Home.css'
+import SpotifyToYouTubeExample from '../assets/SpotifyToYouTubeExample.png'
 
 const Home = () => {
     return (
     <div className="page_body">
         <h1>Home</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tortor quam, ornare ac tortor non, interdum tempus libero. Etiam porta pellentesque mauris, sed vulputate mi cursus eu. Quisque pulvinar lectus at justo aliquet, eu gravida erat sollicitudin. Nam faucibus elementum porttitor. Sed ex dui, pellentesque vel sollicitudin eget, molestie posuere odio. Nam quis pretium mi. Praesent sem felis, molestie non bibendum sit amet, luctus ut erat. Sed vel purus sit amet felis malesuada vulputate in in mauris. Proin libero turpis, vulputate porttitor tellus vel, pretium sagittis enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla imperdiet, est non porttitor porttitor, odio lacus ullamcorper arcu, in scelerisque erat diam vitae elit. Sed scelerisque mi et tellus sagittis placerat.
-
-            Proin in sagittis lectus. Phasellus finibus lacus sapien. Nunc sodales commodo aliquam. Vivamus in placerat ante. Ut nunc velit, pretium quis nulla nec, porta tristique nisi. Phasellus bibendum ut purus vitae malesuada. Donec eu condimentum lacus. Vivamus vulputate tortor ac nisl molestie mattis et non augue. Nunc mollis mauris a arcu dictum, non finibus ipsum finibus. Maecenas tincidunt orci in dictum fermentum. Etiam efficitur libero urna, sed molestie nulla facilisis vel. Donec tincidunt vulputate augue et finibus. Aliquam vulputate, nibh et rutrum luctus, metus urna sodales metus, quis dapibus libero ipsum non neque. Vivamus ipsum erat, congue nec placerat eu, pellentesque at erat.
-
-            Sed eget sem eu ex egestas tincidunt. Ut auctor dolor vel tortor faucibus cursus. Fusce vehicula lacus ac lobortis sagittis. Sed euismod lacinia sem. Donec at risus ex. Donec sed massa nulla. Fusce aliquam urna in lorem auctor porta. Duis ut elit vitae nisl interdum blandit. Pellentesque quis finibus neque, non luctus turpis. Mauris iaculis, ipsum sit amet aliquam consectetur, augue ex tempus erat, et lacinia erat felis rutrum massa. Etiam viverra blandit augue.
-
-            Vivamus id feugiat ipsum, eu tempus mauris. Vestibulum pharetra eleifend semper. Aliquam suscipit convallis ultrices. Cras euismod arcu eu vehicula gravida. Curabitur accumsan varius magna, sed interdum libero bibendum a. Proin vitae mauris auctor dui ullamcorper placerat sit amet vel dui. Vivamus non quam faucibus, elementum mi ut, mattis neque. Donec vestibulum pulvinar urna vel laoreet. Sed ornare sapien et justo laoreet ullamcorper. Aliquam accumsan malesuada augue, in feugiat felis semper in. Donec vel hendrerit mi. Etiam finibus, ipsum posuere tempor lobortis, purus tortor ornare mi, in pellentesque nisl ex sed dui. Etiam dictum malesuada leo et pellentesque. Donec sodales odio non lectus tempus cursus. Aliquam vitae lectus varius, semper urna condimentum, semper nisl.
-
-            Vivamus quis mollis lectus. Nam eleifend pellentesque justo id rhoncus. In id erat augue. Quisque non faucibus lacus. Morbi tincidunt luctus ullamcorper. Aliquam eget est sem. Duis ut velit id arcu varius lobortis a in est. Phasellus ipsum augue, placerat non orci vitae, venenatis tincidunt metus. Donec at ultrices nisl. Suspendisse dignissim pellentesque risus. Vestibulum aliquet vel urna quis lacinia. Nam dapibus ante risus, ut congue nulla pulvinar in. Sed interdum dolor nec consequat blandit. In fermentum, magna mollis venenatis euismod, justo diam dignissim augue, sed pulvinar massa diam non diam.
-
-            Nulla pharetra augue augue, a egestas nisl egestas in. Integer molestie posuere vehicula. Nunc vulputate enim ac elit semper, eu faucibus est sollicitudin. Cras feugiat scelerisque erat, a placerat elit ultricies faucibus. Ut imperdiet gravida tempus. Nunc convallis blandit felis, nec elementum lacus egestas et. Sed ante nunc, laoreet sed lacus ac, faucibus viverra purus. Praesent magna tellus, scelerisque eu erat et, mollis consequat metus. Morbi vehicula gravida arcu, et fermentum enim consequat at. Quisque pulvinar mauris libero, ac sodales ipsum euismod sit amet. Integer sollicitudin sodales ante. Morbi hendrerit urna id elementum tincidunt. Integer placerat accumsan sem, ut luctus lacus maximus et. Vestibulum eros sem, lacinia nec fermentum vitae, dictum vitae lectus.
-
-            Fusce pretium, risus lobortis varius congue, magna eros vulputate lacus, id blandit orci ante non mauris. Maecenas venenatis diam nec efficitur egestas. Proin vitae commodo mi, ut feugiat leo. Aenean sed ultricies leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec lobortis sem sed odio tincidunt, non venenatis velit hendrerit. In gravida massa eros, id lacinia dui bibendum vel. Suspendisse potenti.
-
-            Quisque ut faucibus sem, sit amet interdum justo. Duis eleifend vestibulum euismod. Nam sit amet ultricies nibh, eget ultricies nulla. Morbi efficitur orci augue. Mauris elit augue, efficitur sit amet blandit a, iaculis ac odio. Aenean faucibus vestibulum pharetra. Phasellus vitae magna diam. Nulla pulvinar tellus velit, dictum bibendum ligula elementum quis. Suspendisse interdum quam sit amet magna feugiat dignissim. Pellentesque nec semper orci. Nam pellentesque ipsum id leo ullamcorper posuere.
-
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed sit amet sapien blandit, laoreet metus nec, congue libero. Curabitur eu dui suscipit, posuere neque vel, accumsan mi. Curabitur dapibus cursus arcu vitae aliquet. Mauris commodo ornare massa. Cras accumsan, ante ut commodo congue, magna augue elementum sem, eu vestibulum nisi mi vel sem. Etiam commodo turpis cursus mauris tempor vehicula. Mauris dui erat, viverra vel mi non, mollis posuere nisi. Aenean vulputate ipsum nec tortor pharetra, interdum efficitur tellus congue.
-
-            Nam vestibulum, ligula id eleifend hendrerit, justo massa faucibus velit, id pulvinar leo massa ac augue. Sed sit amet sagittis nibh, in placerat nulla. Quisque nibh urna, vestibulum at felis et, sagittis pharetra leo. Nam ut nunc ac nunc dictum aliquam. Cras id purus ut metus porta efficitur. Fusce et fermentum urna. Donec et efficitur libero. Etiam euismod eros sit amet nibh mollis, sed suscipit lectus congue. Cras vitae tellus semper, mollis leo aliquam, fermentum tortor. Etiam sed nisl sagittis, vehicula orci sit amet, convallis ante. Nunc lacinia gravida tincidunt. Duis at lacus elit. Morbi ut eleifend mauris. Ut volutpat nunc ipsum, a tristique velit tincidunt tincidunt. 
-        </p>
+        <div id="about_me">
+            <div id="image_description">
+                Welcome to my personal website! I'm Carson Zuniga, a Full Stack Engineer with a Bachelor's degree in Computer Engineering from the University of Illinois at Urbana-Champaign. Passionate about creating innovative web applications and solving complex problems, I bring a blend of front-end and back-end expertise. Explore my projects, learn more about my skills, and check out my resume to see how I can contribute to your team. Let's build something amazing together!
+            </div>
+            <div id="personal_photo_container">
+                <img src={personal_photo} id="personal_photo"/>
+            </div>
+        </div>
+        <hr/>
+        <div className="project_container">
+            <h2>SpotifyToYouTube</h2>
+            <button className="project_link" onClick={(e) => {e.preventDefault(); window.open('/SpotifyToYouTube')}}>Try it out</button>
+            <div className="project_description_container">
+                <div className="project_description">
+                    <ul>
+                        <li>
+                            Overview: Seamlessly transfer your Spotify playlists to YouTube.
+                        </li>
+                        <li>
+                            Functionality:
+                            <ul>
+                                <li>Utilizes Spotify's API to fetch user playlist data.</li>
+                                <li>Uses YouTube Data API to create and populate playlists with matching songs.</li>
+                                <li>Ensures secure usage through OAuth 2.0 for client authentication.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Security: Safe and secure with OAuth 2.0, ensuring your data's privacy and integrity.
+                        </li>
+                        <li>
+                            Benefit: Enjoy your favorite Spotify playlists on YouTube with just a few clicks.
+                        </li>
+                    </ul>
+                    <br/>
+                    Explore this project and more on my <a href="https://github.com/CarsonZuniga/Carson_Zuniga_Portfolio/tree/main/src/SpotifyToYouTube" target='_blank'>GitHub</a>.
+                </div>
+                <div className="project_preview">
+                    <img src={SpotifyToYouTubeExample}/>
+                </div>
+            </div>
+        </div>
+        <hr/>
     </div>);
 };
   

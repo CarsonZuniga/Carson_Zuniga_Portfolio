@@ -1,0 +1,8 @@
+#about_description {
+    text-align: start;
+    margin: 0 5vw 0;
+}
+
+#about_description > ul {
+    list-style-position: inside;
+}

@@ -1,0 +1,61 @@
+hr {
+    width: 95%;
+    margin: 2vh auto 2vh auto;
+}
+
+#about_me {
+    display: flex;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    font-size: 1.2em;
+}
+
+#image_description {
+    display: flex;
+    flex: 3;
+    align-items: center;
+    text-align: left;
+}
+
+#personal_photo_container {
+    flex: 1;
+}
+
+#personal_photo {
+    width: 60%;
+    height: auto;
+}
+
+.project_link {
+    padding: 1vw;
+    margin: 0.5vh 0.5vw 0.5vh 0.5vw;
+    /* background-color: red; */
+    border-radius: .5vw;
+    border-color: var(--text-color);
+    /* background: blue; */
+    /* background: none; */
+}
+
+.project_description_container {
+    display: flex;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    text-align: left;
+}
+
+.project_description {
+    flex: 3;
+}
+
+.project_description > ul > li > ul {
+    padding-left: 1em;
+}
+
+.project_preview {
+    flex: 2;
+}
+
+.project_preview > img {
+    width: 100%;
+    height: auto;
+}
