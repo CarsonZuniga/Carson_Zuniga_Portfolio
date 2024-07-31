@@ -1,5 +1,7 @@
 import React, {useEffect, useState, useMemo} from 'react';
-import axios from "axios";
+// import axios from "axios";
+// import axios from 'axios/axios.js';
+import axios from 'redaxios';
 import logo from './logo.png';
 // import NewGoogle from './new_google';
 import loadingGif from '../assets/loading.gif';
