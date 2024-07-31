@@ -42,6 +42,7 @@ const SpotifyToYouTube = () => {
 
     useEffect(() => {
         const hash = window.location.hash;
+        console.log(SPOTIFY_REDIRECT_URI);
         if(hash && window.location.href.match(SPOTIFY_REDIRECT_URI)) {
             let resAccessToken = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
             window.location.href = "/SpotifyToYouTube";
