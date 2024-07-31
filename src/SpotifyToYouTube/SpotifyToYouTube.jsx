@@ -7,15 +7,15 @@ import logo from './logo.png';
 import loadingGif from '../assets/loading.gif';
 import './SpotifyToYouTube.css'
 
-const SPOTIFY_CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID
-const SPOTIFY_REDIRECT_URI = import.meta.env.VITE_SPOTIFY_REDIRECT_URI
+const SPOTIFY_CLIENT_ID = process.env.VITE_SPOTIFY_CLIENT_ID
+const SPOTIFY_REDIRECT_URI = process.env.VITE_SPOTIFY_REDIRECT_URI
 const SPOTIFY_AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
 const SPOTIFY_RESPONSE_TYPE = "token"
 const SPOTIFY_API_ENDPOINT = "https://api.spotify.com/v1"
 const SPOTIFY_PLAYLIST_SCOPE = "playlist-read-private"
 
-const YOUTUBE_CLIENT_ID = import.meta.env.VITE_YOUTUBE_CLIENT_ID;
-const YOUTUBE_REDIRECT_URI = import.meta.env.VITE_YOUTUBE_REDIRECT_URI;
+const YOUTUBE_CLIENT_ID = process.env.VITE_YOUTUBE_CLIENT_ID;
+const YOUTUBE_REDIRECT_URI = process.env.VITE_YOUTUBE_REDIRECT_URI;
 const YOUTUBE_AUTH_ENDPOINT = "https://accounts.google.com/o/oauth2/v2/auth"
 
 const SpotifyToYouTube = () => {
