@@ -313,7 +313,8 @@ const SpotifyToYouTube = () => {
             return response.data.id;
         } catch (error) {
             alert('Error creating playlist');
-            if(error.response.data.error.errors[0].reason == "quotaExceeded") {
+            console.log(error);
+            if(error.data.error.errors[0].reason == "quotaExceeded") {
                 alert("Daily quota limit exceeded. Please try again later")
             }
             // console.log();
