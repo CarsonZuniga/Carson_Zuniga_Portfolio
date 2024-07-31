@@ -1,5 +1,4 @@
 import './Contact.css'
-import axios from 'axios';
 import { useState, useRef } from 'react';
 import emailjs from 'emailjs-com';
 
