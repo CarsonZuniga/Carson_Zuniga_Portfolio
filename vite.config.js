@@ -32,9 +32,9 @@ dotenv.config();
 console.log("hello", process.env.VITE_SPOTIFY_REDIRECT_URI) //when you run the frontend using yarn dev you will be able to see this on you cmd to know this works! :D
 
 export default defineConfig({
-    SPOTIFY_CLIENT_ID: process.env.VITE_SPOTIFY_CLIENT_ID,
-    SPOTIFY_REDIRECT_URI: process.env.VITE_SPOTIFY_REDIRECT_URI,
-    YOUTUBE_CLIENT_ID: process.env.VITE_YOUTUBE_CLIENT_ID,
-    YOUTUBE_REDIRECT_URI: process.env.VITE_YOUTUBE_REDIRECT_URI,
+    VITE_SPOTIFY_CLIENT_ID: process.env.VITE_SPOTIFY_CLIENT_ID,
+    VITE_SPOTIFY_REDIRECT_URI: process.env.VITE_SPOTIFY_REDIRECT_URI,
+    VITE_YOUTUBE_CLIENT_ID: process.env.VITE_YOUTUBE_CLIENT_ID,
+    VITE_YOUTUBE_REDIRECT_URI: process.env.VITE_YOUTUBE_REDIRECT_URI,
     plugins: [react()],
 })
