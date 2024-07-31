@@ -344,7 +344,7 @@ const SpotifyToYouTube = () => {
             return videoId ? videoId : null;
         } catch (error) {
             console.error('Error fetching video ID:', error);
-            if(error.response.data.error.errors[0].reason == "quotaExceeded") {
+            if(error.data.error.errors[0].reason == "quotaExceeded") {
                 alert("Daily quota limit exceeded. Please try again later")
             }
             return null;
@@ -373,7 +373,7 @@ const SpotifyToYouTube = () => {
             setNumVidsUploaded(numVidsUploaded + 1);
             // console.log('Video added to playlist:', response.data);
         } catch (error) {
-            if(error.response.data.error.errors[0].reason == "quotaExceeded") {
+            if(error.data.error.errors[0].reason == "quotaExceeded") {
                 alert("Daily quota limit exceeded. Please try again later")
             }
             // console.error('Error adding video to playlist:', error);
