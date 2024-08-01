@@ -81,4 +81,7 @@ hr {
     .project_description > ul {
         list-style-position: inside;
     }
+    .project_description_container {
+        flex-direction: column-reverse;
+    }
 }
