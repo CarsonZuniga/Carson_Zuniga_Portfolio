@@ -19,6 +19,23 @@ const YOUTUBE_REDIRECT_URI = process.env.VITE_YOUTUBE_REDIRECT_URI;
 const YOUTUBE_AUTH_ENDPOINT = "https://accounts.google.com/o/oauth2/v2/auth"
 
 const SpotifyToYouTube = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+    const isMobile = width <= 600;
+    const isTablet = width > 600 && width <= 768;
+    const isDesktop = width > 768;
+
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+
+
     // spotify data
     const [spotifyToken, setSpotifyToken] = useState("");
     const [playlists, setPlaylists] = useState([]);
@@ -420,7 +437,13 @@ const SpotifyToYouTube = () => {
                         return playlist.name.toLowerCase().match(searchInput.toLowerCase()) || playlist.owner.display_name.toLowerCase().match(searchInput.toLowerCase()) || playlist.id.toLowerCase().match(searchInput.toLowerCase())
                     }).map(playlist => (
                         <div key={playlist.id}>
-                            <input type="radio" id={playlist.id} name="chosen_playlist" value={playlist.name} data-numtracks={playlist.tracks.total} onChange={(e) => {setChosenPlaylistID(e.target.id); setChosenPlaylistName(e.target.value); setChosenPlaylistNumTracks(e.target.dataset.numtracks)}}/>
+                            <input type="radio" id={playlist.id} name="chosen_playlist" value={playlist.name} data-numtracks={playlist.tracks.total} onChange={(e) => {
+                                    setChosenPlaylistID(e.target.id);
+                                    setChosenPlaylistName(e.target.value);
+                                    setChosenPlaylistNumTracks(e.target.dataset.numtracks);
+                                    if (isMobile)
+                                        window.scrollTo(0, 0);
+                                }}/>
                             <label htmlFor={playlist.id}>{playlist.name}</label>
                         </div>
                     ))}

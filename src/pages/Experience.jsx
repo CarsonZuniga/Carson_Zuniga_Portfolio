@@ -1,6 +1,23 @@
 import './Experience.css'
+import { useState, useEffect } from 'react';
 
 const Experience = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+    const isMobile = width <= 600;
+    const isTablet = width > 600 && width <= 768;
+    const isDesktop = width > 768;
+
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+
     return (
         <div className="page_body">
             <h1>Experience</h1>

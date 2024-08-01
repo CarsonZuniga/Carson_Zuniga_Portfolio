@@ -7,11 +7,9 @@ const Home = () => {
     <div className="page_body">
         <h1>Home</h1>
         <div id="about_me">
+            <img src={personal_photo} id="personal_photo"/>
             <div id="image_description">
                 Welcome to my personal website! I'm Carson Zuniga, a Full Stack Engineer with a Bachelor's degree in Computer Engineering from the University of Illinois at Urbana-Champaign. Passionate about creating innovative web applications and solving complex problems, I bring a blend of front-end and back-end expertise. Explore my projects, learn more about my skills, and check out my resume to see how I can contribute to your team. Let's build something amazing together!
-            </div>
-            <div id="personal_photo_container">
-                <img src={personal_photo} id="personal_photo"/>
             </div>
         </div>
         <hr/>
