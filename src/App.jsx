@@ -12,6 +12,7 @@ import NoPage from "./pages/NoPage";
 import Education from './pages/Education';
 import Experience from './pages/Experience';
 import SpotifyToYouTube from './SpotifyToYouTube/SpotifyToYouTube';
+import ChessTrainer from './ChessTrainer/ChessTrainer';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                 <Route path="*" element={<NoPage />} />
             </Route>
             <Route path="/SpotifyToYouTube/*" element={<SpotifyToYouTube/>}></Route>
+            <Route path="/ChessTrainer/*" element={<ChessTrainer/>}></Route>
         </Routes>
         </div>
     </BrowserRouter>
