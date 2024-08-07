@@ -14,7 +14,13 @@ const generateCodeChallenge = (codeVerifier) => {
     const codeVerifierBytes = CryptoJS.enc.Utf8.parse(codeVerifier);
     const hashed = CryptoJS.SHA256(codeVerifierBytes);
     return hashed.toString(CryptoJS.enc.Base64url);
-  }
+}
+
+const updateURLCode = () => {
+    // Remove the query string
+    const url = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    window.history.replaceState({ path: url }, '', url);
+}
 
 const ChessTrainer = () => {
 
@@ -27,6 +33,7 @@ const ChessTrainer = () => {
 
     useEffect(() => {
         // console.log(window.location.search)
+        // console.log("did useeffect")
         if(lichessAccessToken)
             return;
         if (window.location.search.includes('code=') && !lichessAuthCode && (localStorage.getItem("code_verifier") || lichessCodeVerifier)) {
@@ -36,16 +43,13 @@ const ChessTrainer = () => {
 
     useEffect(() => {
         if(lichessAccessToken) {
-            console.log("already have access token");
-        }
-        else if(!lichessAuthCode || !lichessCodeVerifier) {
-            console.log("missing either auth code or verifier", lichessAuthCode, lichessCodeVerifier);
+            // console.log("already have access token");
+            return;
         }
         else if(lichessAuthCode && lichessCodeVerifier) {
             console.log("have both auth code and verifier", lichessAuthCode, lichessCodeVerifier);
             lichessReqAccessToken();
         }
-            
     }, [lichessAuthCode, lichessCodeVerifier]);
 
     useEffect(() => {
@@ -93,14 +97,14 @@ const ChessTrainer = () => {
     }
 
     const lichessReqAccessToken = async () => {
-        console.log("Hello req acc token", lichessAuthCode, lichessCodeVerifier)
+        // console.log("Hello req acc token", lichessAuthCode, lichessCodeVerifier)
         if(lichessAccessToken)
             return;
         if(!lichessAuthCode || !lichessCodeVerifier)
             return;
-        console.log("Trying to exchange code for token")
+        // console.log("Trying to exchange code for token")
         try {
-            console.log("posting")
+            // console.log("posting")
             const response = await axios.post("https://lichess.org/api/token", {
                 // params: {
                     grant_type: "authorization_code",
@@ -110,11 +114,17 @@ const ChessTrainer = () => {
                     client_id: CLIENT_ID
                 // }
             });
-            console.log(response);
+            // console.log(response);
             const { access_token } = response.data;
-            setLichessAccessToken(access_token);
+            window.localStorage.setItem("access_token", access_token);
+            window.localStorage.setItem("auth_code", lichessAuthCode);
+            window.localStorage.setItem("code_verifier", lichessCodeVerifier);
+            // window.location.href = "/ChessTrainer";
+            updateURLCode();
+            setLichessAccessToken(window.localStorage.getItem("access_token"));
             setLichessLoggedIn(true);
-            window.location.href = "/ChessTrainer";
+            setLichessAuthCode(window.localStorage.getItem("auth_code"));
+            setLichessCodeVerifier(window.localStorage.getItem("code_verifier"));
         }
         catch (error) {
             console.log("oops access token")
@@ -123,18 +133,33 @@ const ChessTrainer = () => {
     }
 
     const lichessGetUserInfo = async () => {
-        if(!lichessAccessToken)
+        if(!lichessAccessToken || Object.keys(lichessUserInfo).length > 0)
             return;
         try {
-            const response = await axios.get("https://lichess.org/api/account", null, {
+            const response = await axios.get("https://lichess.org/api/account", {
                 headers: {Authorization: `Bearer ${lichessAccessToken}`}
-            }).then(res => console.log(res));
+            });
             setLichessUserInfo(response.data);
+            console.log(response);
+            console.log(response.data);
         }
         catch(error) {
             console.log(error);
             alert("Unable to get user information. Please log in again");
-            lichessLogout();
+            // lichessLogout();
+        }
+    }
+
+    const lichessGetDailyPuzzle = async () => {
+        try {
+            const response = await axios.get("https://lichess.org/api/puzzle/daily");
+            // setLichessUserInfo(response.data);
+            console.log(response);
+            console.log(response.data);
+        }
+        catch(error) {
+            console.log(error);
+            alert("Unable to get daily puzzle. Please try again");
         }
     }
 
@@ -158,87 +183,49 @@ const ChessTrainer = () => {
             return <button onClick={lichessLogout}>Log Out Of Lichess</button>
     }
 
+    const renderGetTodaysPuzzle = () => {
+        if(lichessLoggedIn)
+            return <button onClick={lichessGetDailyPuzzle}>Get Today's Puzzle</button>
+        else
+            return <></>
+    }
+
+    // const renderBoard = () => {
+    //     return <iframe src={`https://lichess.org/analysis?tab=analysis&fens=r1bqkbnr/pppppppp/n7/8/8/5N2/PPPPPPPP/RNBQKB1R w KQkq - 0 1`} frameborder="0"></iframe>
+    // }
+
+    const renderPuzzleBoard = (puzzle_id) => {
+        // see https://chessboardjs.com/examples#5000
+        return <iframe src={`https://lichess.org/training/${puzzle_id}?theme=brown&bg=dark`} style={{width: "400px", aspectRatio: "10/11"}} allowtransparency="true" frameBorder="0"></iframe>
+    }
+
+    const renderLichessUserInfo = () => {
+        if(Object.keys(lichessUserInfo).length > 0)
+            return (
+            <div>
+                <div>
+                    Logged in as {lichessUserInfo.username}
+                </div>
+                <div>
+                    URL: <a href={lichessUserInfo.url} target='_blank'>{lichessUserInfo.url}</a>
+                </div>
+            </div>
+            );
+        else if (lichessLoggedIn)
+            return <div>Getting user info...</div>
+        else
+            return <div>Not Logged In</div>
+    }
+
     return (
         <div>
             {renderLichessLoginButton()}
+            {renderLichessUserInfo()}
+            {renderGetTodaysPuzzle()}
+            {/* {renderTodaysPuzzle()} */}
+            {renderPuzzleBoard("Lfd0Q")}
         </div>
     );
 }
 
 export default ChessTrainer;
-
-// const generateCodeVerifier = () => {
-//     const array = CryptoJS.lib.WordArray.random(32);
-//     return array.toString(CryptoJS.enc.Base64url); // base64url encoding
-// }
-  
-//   // Generate the code challenge from the verifier
-// const generateCodeChallenge = (codeVerifier) => {
-//     const codeVerifierBytes = CryptoJS.enc.Utf8.parse(codeVerifier);
-//     const hashed = CryptoJS.SHA256(codeVerifierBytes);
-//     return hashed.toString(CryptoJS.enc.Base64url);
-// }
-
-// const LICHESS_AUTH_URL = 'https://lichess.org/oauth';
-// const LICHESS_TOKEN_URL = 'https://lichess.org/oauth/token';
-// const CLIENT_ID = 'carsons_secret_client_id';
-// const REDIRECT_URI = 'http://localhost:5173/ChessTrainer/lichess-callback';
-// const STATE = 'RANDOM_STATE'; // Optional, but recommended for CSRF protection
-
-// const ChessTrainer = () => {
-//   const initiateAuth = () => {
-//     const codeVerifier = generateCodeVerifier();
-//     localStorage.setItem('code_verifier', codeVerifier);
-
-//     const codeChallenge = generateCodeChallenge(codeVerifier);
-//     const authUrl = `${LICHESS_AUTH_URL}/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&code_challenge=${codeChallenge}&code_challenge_method=S256&state=${STATE}`;
-
-//     window.location.href = authUrl;
-//   };
-
-//   const handleRedirect = async () => {
-//     const queryParams = new URLSearchParams(window.location.search);
-//     const code = queryParams.get('code');
-//     const state = queryParams.get('state');
-//     const codeVerifier = localStorage.getItem('code_verifier');
-
-//     if (!code || !codeVerifier) {
-//       // Handle error
-//       console.error('Missing code or code verifier');
-//       return;
-//     }
-
-//     try {
-//       const response = await axios.post(LICHESS_TOKEN_URL, null, {
-//         params: {
-//           grant_type: 'authorization_code',
-//           code: code,
-//           redirect_uri: REDIRECT_URI,
-//           client_id: CLIENT_ID,
-//           code_verifier: codeVerifier,
-//         },
-//       });
-
-//       const { access_token } = response.data;
-//       console.log('Access Token:', access_token);
-//       // Store and use access_token as needed
-//     } catch (error) {
-//       console.error('Error exchanging code for token', error);
-//     }
-//   };
-
-//   useEffect(() => {
-//     if (window.location.search.includes('code=')) {
-//       handleRedirect();
-//     }
-//   }, []);
-
-//   return (
-//     <div>
-//       <h1>OAuth PKCE with Lichess</h1>
-//       <button onClick={initiateAuth}>Authenticate with Lichess</button>
-//     </div>
-//   );
-// };
-
-// export default ChessTrainer;
