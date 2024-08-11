@@ -504,6 +504,7 @@ const SpotifyToYouTube = () => {
     }
 
     return (
+        <>
         <div id="spotify_container_big">
             <div id="spotify_buttons">
                 <div id="back-home-button-container">
@@ -534,6 +535,10 @@ const SpotifyToYouTube = () => {
                 </div>
             </div>
         </div>
+        <div className="overlay">
+            <a href="https://github.com/CarsonZuniga/Carson_Zuniga_Portfolio/tree/main/src/SpotifyToYouTube" target="_blank">View the source code</a>
+        </div>
+        </>
     );
 }
 

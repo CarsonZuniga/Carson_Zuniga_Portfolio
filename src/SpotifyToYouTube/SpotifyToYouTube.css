@@ -99,6 +99,35 @@ html, body {
     align-self: center;
 }
 
+.overlay {
+    position: fixed;
+    background-color: rgba(0,0,0,0.1);
+    width: 15vw;
+    height: 7vh;
+    bottom: 1vh;
+    right: 1vh;
+    border-radius: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.overlay:hover {
+    background-color: rgba(0,0,0,0.2);;
+}
+
+.overlay > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+}
+
 /* .spotify-button a {
     text-decoration: none;
 } */
