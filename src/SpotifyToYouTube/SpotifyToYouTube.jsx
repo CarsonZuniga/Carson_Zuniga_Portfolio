@@ -19,6 +19,23 @@ const YOUTUBE_REDIRECT_URI = process.env.VITE_YOUTUBE_REDIRECT_URI;
 const YOUTUBE_AUTH_ENDPOINT = "https://accounts.google.com/o/oauth2/v2/auth"
 
 const SpotifyToYouTube = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+    const isMobile = width <= 600;
+    const isTablet = width > 600 && width <= 768;
+    const isDesktop = width > 768;
+
+    function handleWindowSizeChange() {
+        setWidth(window.innerWidth);
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize', handleWindowSizeChange);
+        return () => {
+            window.removeEventListener('resize', handleWindowSizeChange);
+        }
+    }, []);
+
+
     // spotify data
     const [spotifyToken, setSpotifyToken] = useState("");
     const [playlists, setPlaylists] = useState([]);
@@ -313,7 +330,8 @@ const SpotifyToYouTube = () => {
             return response.data.id;
         } catch (error) {
             alert('Error creating playlist');
-            if(error.response.data.error.errors[0].reason == "quotaExceeded") {
+            console.log(error);
+            if(error.data.error.errors[0].reason == "quotaExceeded") {
                 alert("Daily quota limit exceeded. Please try again later")
             }
             // console.log();
@@ -343,7 +361,7 @@ const SpotifyToYouTube = () => {
             return videoId ? videoId : null;
         } catch (error) {
             console.error('Error fetching video ID:', error);
-            if(error.response.data.error.errors[0].reason == "quotaExceeded") {
+            if(error.data.error.errors[0].reason == "quotaExceeded") {
                 alert("Daily quota limit exceeded. Please try again later")
             }
             return null;
@@ -372,7 +390,7 @@ const SpotifyToYouTube = () => {
             setNumVidsUploaded(numVidsUploaded + 1);
             // console.log('Video added to playlist:', response.data);
         } catch (error) {
-            if(error.response.data.error.errors[0].reason == "quotaExceeded") {
+            if(error.data.error.errors[0].reason == "quotaExceeded") {
                 alert("Daily quota limit exceeded. Please try again later")
             }
             // console.error('Error adding video to playlist:', error);
@@ -419,7 +437,13 @@ const SpotifyToYouTube = () => {
                         return playlist.name.toLowerCase().match(searchInput.toLowerCase()) || playlist.owner.display_name.toLowerCase().match(searchInput.toLowerCase()) || playlist.id.toLowerCase().match(searchInput.toLowerCase())
                     }).map(playlist => (
                         <div key={playlist.id}>
-                            <input type="radio" id={playlist.id} name="chosen_playlist" value={playlist.name} data-numtracks={playlist.tracks.total} onChange={(e) => {setChosenPlaylistID(e.target.id); setChosenPlaylistName(e.target.value); setChosenPlaylistNumTracks(e.target.dataset.numtracks)}}/>
+                            <input type="radio" id={playlist.id} name="chosen_playlist" value={playlist.name} data-numtracks={playlist.tracks.total} onChange={(e) => {
+                                    setChosenPlaylistID(e.target.id);
+                                    setChosenPlaylistName(e.target.value);
+                                    setChosenPlaylistNumTracks(e.target.dataset.numtracks);
+                                    if (isMobile)
+                                        window.scrollTo(0, 0);
+                                }}/>
                             <label htmlFor={playlist.id}>{playlist.name}</label>
                         </div>
                     ))}
@@ -480,6 +504,7 @@ const SpotifyToYouTube = () => {
     }
 
     return (
+        <>
         <div id="spotify_container_big">
             <div id="spotify_buttons">
                 <div id="back-home-button-container">
@@ -510,6 +535,10 @@ const SpotifyToYouTube = () => {
                 </div>
             </div>
         </div>
+        <div className="overlay">
+            <a href="https://github.com/CarsonZuniga/Carson_Zuniga_Portfolio/tree/main/src/SpotifyToYouTube" target="_blank">View the source code</a>
+        </div>
+        </>
     );
 }
 

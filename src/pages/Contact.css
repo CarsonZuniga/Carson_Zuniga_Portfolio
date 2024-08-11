@@ -66,3 +66,19 @@ textarea {
     padding: 0.75vw;
     overflow:auto;
 }
+
+/* MOBILE */
+
+@media only screen and (max-width: 600px) {
+    /* #contact_big_container {
+        margin: 0;
+    }
+    .contact_info_sub {
+        overflow-wrap: break-word;
+        word-break: break-all;
+    } */
+    #contact_big_container {
+        margin: 0;
+        flex-direction: column;
+    }
+}

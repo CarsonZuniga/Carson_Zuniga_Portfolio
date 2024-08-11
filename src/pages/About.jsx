@@ -14,6 +14,7 @@ const About = () => {
                 </ul>
                 <br/>
                 <p>Explore the site to see these technologies in action and learn more about my work.</p>
+                <a href="https://github.com/CarsonZuniga/Carson_Zuniga_Portfolio" target='_blank'>View the source code.</a>
             </div>
         </div>
     );
